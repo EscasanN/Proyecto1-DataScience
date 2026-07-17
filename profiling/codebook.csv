@@ -1,0 +1,18 @@
+﻿variable,dominio_esperado,problemas_encontrados
+CODIGO,"patron dd-dd-dddd-dd, unico por establecimiento",ninguno
+DISTRITO,patron dd-ddd,caracteres invisibles (532); puntuacion sobrante al inicio o final (70)
+DEPARTAMENTO,catalogo oficial del portal (23 valores; el portal separa CIUDAD CAPITAL de GUATEMALA),ninguno
+MUNICIPIO,"catalogo oficial del portal, dependiente del departamento; hay 6 nombres homonimos en mas de un departamento (LA LIBERTAD, SAN JOSE, ...), agrupar siempre por el par",ninguno
+ESTABLECIMIENTO,"texto libre; nombre propio, conserva ortografia y tildes",caracteres invisibles (5); caracteres sospechosos o mojibake (14); categoria duplicada por escritura (2130); comillas o parentesis sin cerrar (17); espacios multiples internos (1395); posible typo entre nombres (similitud >= 92) (218); puntuacion sobrante al inicio o final (397)
+DIRECCION,texto libre,caracteres invisibles (76); categoria duplicada por escritura (853); centinela de dato ausente (13); comillas o parentesis sin cerrar (1); espacios multiples internos (485); mayusculas inconsistentes (10); puntuacion sobrante al inicio o final (121)
+TELEFONO,8 digitos (numeracion nacional de guatemala),caracteres invisibles (946); categoria duplicada por escritura (3); espacios multiples internos (8); mayusculas inconsistentes (1); telefono con mas de un numero en la celda (183); telefono fuera de formato (no son 8 digitos) (251)
+SUPERVISOR,texto libre; nombre de persona,caracteres invisibles (4); caracteres sospechosos o mojibake (4); categoria duplicada por escritura (1198); centinela de dato ausente (3); espacios al inicio o final (31); espacios multiples internos (102); puntuacion sobrante al inicio o final (25)
+DIRECTOR,texto libre; nombre de persona,caracteres invisibles (1732); caracteres sospechosos o mojibake (15); categoria duplicada por escritura (244); centinela de dato ausente (414); comillas o parentesis sin cerrar (1); espacios al inicio o final (241); espacios multiples internos (868); puntuacion sobrante al inicio o final (7)
+NIVEL,categorico: DIVERSIFICADO (fijado por el filtro de descarga),ninguno
+SECTOR,"categorico: OFICIAL, PRIVADO, MUNICIPAL, COOPERATIVA",ninguno
+AREA,"categorico: URBANA, RURAL, SIN ESPECIFICAR",ninguno
+STATUS,"categorico: ABIERTA, CERRADA TEMPORALMENTE, ...",ninguno
+MODALIDAD,"categorico: MONOLINGUE, BILINGUE",ninguno
+JORNADA,"categorico: MATUTINA, VESPERTINA, DOBLE, NOCTURNA, ...",ninguno
+PLAN,"categorico: DIARIO(REGULAR), FIN DE SEMANA, ...",ninguno
+DEPARTAMENTAL,"direccion departamental del mineduc (26 valores: guatemala se parte en 4, quiche en 2)",ninguno

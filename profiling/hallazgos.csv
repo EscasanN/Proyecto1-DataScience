@@ -1,0 +1,38 @@
+﻿variable,problema,casos,ejemplo
+ESTABLECIMIENTO,categoria duplicada por escritura,2130,"'COLEGIO DE INFORMATICA ""CENINFAV""'"
+DIRECTOR,caracteres invisibles,1732,'\xa0'
+ESTABLECIMIENTO,espacios multiples internos,1395,'INSTITUTO MIXTO NOCTURNO  FRANCISCO MARROQUIN'
+SUPERVISOR,categoria duplicada por escritura,1198,'EMILIO RUBÉN CAAL GUALIB'
+TELEFONO,caracteres invisibles,946,'\xa0'
+DIRECTOR,espacios multiples internos,868,'VIRGINIA  SOLANO SERRANO'
+DIRECCION,categoria duplicada por escritura,853,'2A CALLE 11-10 ZONA 2'
+DISTRITO,caracteres invisibles,532,'\xa0'
+DIRECCION,espacios multiples internos,485,"'12 AV. A  4-30, ZONA 3, BARRIO ASUNCION'"
+DIRECTOR,centinela de dato ausente,414,'--'
+ESTABLECIMIENTO,puntuacion sobrante al inicio o final,397,'INSTITUTO INTERCULTRUAL ALTAVERAPACENCESE -IIAV-'
+TELEFONO,telefono fuera de formato (no son 8 digitos),251,'4085613'
+DIRECTOR,categoria duplicada por escritura,244,'CLARA LUZ ALVARADO '
+DIRECTOR,espacios al inicio o final,241,'MANUEL DE JESÚS CRUZ '
+ESTABLECIMIENTO,posible typo entre nombres (similitud >= 92),218,'INED INSTITUTO NACIONAL DE EDUCACION DIVERSIFICADA  <->  INSTITUTO NACIONAL DE EDUCACION DIVERSIFICADA'
+TELEFONO,telefono con mas de un numero en la celda,183,'78208583-78209143'
+DIRECCION,puntuacion sobrante al inicio o final,121,"'5A. CALLE 1-98, ZONA 3.'"
+SUPERVISOR,espacios multiples internos,102,"'AMALIA ESTER LIX\xa0 SOCOP\xa0 DE CHUY,'"
+DIRECCION,caracteres invisibles,76,'\xa0'
+DISTRITO,puntuacion sobrante al inicio o final,70,'01-'
+SUPERVISOR,espacios al inicio o final,31,' EDUARDO YALIBAT'
+SUPERVISOR,puntuacion sobrante al inicio o final,25,"'AMALIA ESTER LIX\xa0 SOCOP\xa0 DE CHUY,'"
+ESTABLECIMIENTO,comillas o parentesis sin cerrar,17,"'INSTITUTO NACIONAL DE EDUCACION DIVERSIFICADA ""XEKUPILAJ"" (CERRO SAGRADO""'"
+DIRECTOR,caracteres sospechosos o mojibake,15,'HÈCTOR RAÚL MOSCOSO ORELLANA'
+ESTABLECIMIENTO,caracteres sospechosos o mojibake,14,'INSTITUTO MIXTO DE EDUCACIÒN BILINGÜE INTERCULTURAL IMEBI'
+DIRECCION,centinela de dato ausente,13,'--'
+DIRECCION,mayusculas inconsistentes,10,"'3a. CALLE 6-108 ZONA 1, COLONIA LAS MAJADAS'"
+TELEFONO,espacios multiples internos,8,'22205283  2500774'
+DIRECTOR,puntuacion sobrante al inicio o final,7,'----MARIA DEL ROSARIO LOPEZ ESCOBAR'
+ESTABLECIMIENTO,caracteres invisibles,5,'\xa0'
+SUPERVISOR,caracteres invisibles,4,"'AMALIA ESTER LIX\xa0 SOCOP\xa0 DE CHUY,'"
+SUPERVISOR,caracteres sospechosos o mojibake,4,'EDGAR ROLANDO JUÁREZ ORTÌZ'
+TELEFONO,categoria duplicada por escritura,3,"'25763,26725 Y 21568'"
+SUPERVISOR,centinela de dato ausente,3,'---------------------------- ----------------------------------'
+DIRECCION,comillas o parentesis sin cerrar,1,"'SECTOR 1 MANZANA ""B2 LOTE 31 Y 32, COLONIA PLANES DEL MILAGRO, ZONA 0'"
+TELEFONO,mayusculas inconsistentes,1,'232-1011 y 251-6422'
+DIRECTOR,comillas o parentesis sin cerrar,1,"'BRAYAN O""NELL GAITÁN RODRIGUEZ'"

@@ -1,13 +1,7 @@
-"""
-descarga los establecimientos educativos de nivel diversificado de todo el pais
-desde el portal del mineduc, y los guarda crudos en csv (uno por departamento
-mas uno consolidado).
-
-fuente: https://www.mineduc.gob.gt/BUSCAESTABLECIMIENTO_GE/
-
-el portal es asp.net webforms, asi que hay que respetar el viewstate y hacer el
-postback del departamento antes de consultar. ver seleccionar_departamento().
-"""
+# descarga los establecimientos de nivel diversificado de todo el pais desde
+# el portal del mineduc y los guarda crudos en csv (uno por departamento mas
+# el consolidado). el portal es asp.net webforms: hay que respetar el
+# viewstate y hacer el postback del departamento antes de consultar
 
 from datetime import datetime, timezone
 from pathlib import Path
@@ -40,8 +34,8 @@ def crear_sesion():
     return s
 
 
+# saca los hidden (__VIEWSTATE, __EVENTVALIDATION, etc.) para reenviarlos
 def leer_estado(sopa):
-    """saca los hidden (__VIEWSTATE, __EVENTVALIDATION, etc.) para reenviarlos"""
     return {
         i["name"]: i.get("value", "")
         for i in sopa.find_all("input", type="hidden")
@@ -70,11 +64,9 @@ def listar_departamentos(sopa):
     ]
 
 
+# dispara el autopostback del combo de departamento. hay que hacerlo si o si:
+# la consulta directa la rechaza el eventvalidation con un 500
 def seleccionar_departamento(sesion, sopa, codigo):
-    """
-    dispara el autopostback del combo de departamento. hay que hacerlo si o si:
-    si mandamos la consulta directo, el eventvalidation la rechaza con un 500.
-    """
     datos = leer_estado(sopa)
     datos.update({
         "__EVENTTARGET": P + "cmbDepartamento",
@@ -102,13 +94,9 @@ def consultar(sesion, sopa, codigo):
     return postear(sesion, datos)
 
 
+# tabla html -> dataframe sin tocar el contenido. NO se hace strip: los
+# espacios sobrantes y los \xa0 son parte del crudo y se detectan despues
 def parsear_tabla(sopa):
-    """
-    convierte la tabla de resultados en dataframe, sin tocar el contenido.
-
-    ojo: NO se hace strip del texto. los espacios sobrantes y los \\xa0 son
-    parte de los datos crudos y hay que detectarlos despues en la limpieza.
-    """
     tabla = sopa.find("table", id=TABLA_ID)
     if tabla is None:
         return None

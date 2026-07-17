@@ -1,2 +1,4 @@
 files/*.xls
 temp/*
+__pycache__/
+*.pyc
