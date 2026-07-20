@@ -12,12 +12,15 @@ _ESPACIOS = re.compile(r"\s+")
 # vacio de verdad: el portal manda \xa0 y pandas no lo lee como NA, pero
 # strip() si se lo come. los centinelas tipo "SIN DATO" van en detectores.py
 def es_faltante(valor):
+    if not isinstance(valor, str):
+        return False
     return valor.strip() == ""
 
 
 # descompone y bota los diacriticos. la enie tambien cae, ojo al usarla
 def sin_tildes(valor):
-    descompuesto = unicodedata.normalize("NFD", valor)
+    val = str(valor)
+    descompuesto = unicodedata.normalize("NFD", val)
     return "".join(c for c in descompuesto if unicodedata.category(c) != "Mn")
 
 

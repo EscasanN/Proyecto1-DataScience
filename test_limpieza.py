@@ -52,6 +52,11 @@ def test_quitar_puntuacion_borde_respeta_nombres():
     assert resultado.tolist() == ['DIARIO(REGULAR)', 'COLEGIO "LA INMACULADA"']
 
 
+def test_quitar_puntuacion_borde_quita_espacios_finales():
+    resultado = lim.quitar_puntuacion_borde(serie(["COLEGIO -", "ZONA 3. ", "OK"]))
+    assert resultado.tolist() == ["COLEGIO", "ZONA 3", "OK"]
+
+
 # ---------------------------------------------------------------
 # faltantes
 # ---------------------------------------------------------------

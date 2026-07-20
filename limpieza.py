@@ -61,8 +61,10 @@ def normalizar_mayusculas(serie):
 # detectores.PUNTUACION_BORDE, para no marcar como "sobrante" algo que la
 # deteccion anterior considera legitimo
 def quitar_puntuacion_borde(serie):
-    v = serie.str.replace(_PUNTUACION_INICIO, "", regex=True)
-    return v.str.replace(_PUNTUACION_FINAL, "", regex=True)
+    v = serie.str.strip()
+    v = v.str.replace(_PUNTUACION_INICIO, "", regex=True)
+    v = v.str.replace(_PUNTUACION_FINAL, "", regex=True)
+    return v.str.strip()
 
 
 # unifica bajo NA los vacios de verdad (es_faltante) y los centinelas de
