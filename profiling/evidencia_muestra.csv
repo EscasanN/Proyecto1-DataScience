@@ -1,0 +1,104 @@
+﻿variable,transformacion,antes,despues
+ESTABLECIMIENTO,normalizar_faltantes,'\xa0',<NA>
+DIRECCION,normalizar_faltantes,'\xa0',<NA>
+DIRECCION,normalizar_faltantes,'\xa0',<NA>
+DIRECCION,normalizar_faltantes,'\xa0',<NA>
+DIRECCION,normalizar_faltantes,'\xa0',<NA>
+DIRECCION,normalizar_faltantes,'\xa0',<NA>
+SUPERVISOR,normalizar_faltantes,' ',<NA>
+SUPERVISOR,normalizar_faltantes,' ',<NA>
+SUPERVISOR,normalizar_faltantes,' ',<NA>
+SUPERVISOR,normalizar_faltantes,' ',<NA>
+SUPERVISOR,normalizar_faltantes,' ',<NA>
+DIRECTOR,normalizar_faltantes,'\xa0',<NA>
+DIRECTOR,normalizar_faltantes,'\xa0',<NA>
+DIRECTOR,normalizar_faltantes,'\xa0',<NA>
+DIRECTOR,normalizar_faltantes,'\xa0',<NA>
+DIRECTOR,normalizar_faltantes,'\xa0',<NA>
+TELEFONO,normalizar_faltantes,'\xa0',<NA>
+TELEFONO,normalizar_faltantes,'\xa0',<NA>
+TELEFONO,normalizar_faltantes,'\xa0',<NA>
+TELEFONO,normalizar_faltantes,'\xa0',<NA>
+TELEFONO,normalizar_faltantes,'\xa0',<NA>
+DISTRITO,normalizar_faltantes,'\xa0',<NA>
+DISTRITO,normalizar_faltantes,'\xa0',<NA>
+DISTRITO,normalizar_faltantes,'\xa0',<NA>
+DISTRITO,normalizar_faltantes,'\xa0',<NA>
+DISTRITO,normalizar_faltantes,'\xa0',<NA>
+ESTABLECIMIENTO,quitar_invisibles,'\xa0',' '
+ESTABLECIMIENTO,normalizar_espacios,'INED  INSTITUTO NACIONAL DE EDUCACIÓN DIVERSIFICADA','INED INSTITUTO NACIONAL DE EDUCACIÓN DIVERSIFICADA'
+ESTABLECIMIENTO,normalizar_espacios,'INED  INSTITUTO NACIONAL DE EDUCACIÓN DIVERSIFICADA','INED INSTITUTO NACIONAL DE EDUCACIÓN DIVERSIFICADA'
+ESTABLECIMIENTO,normalizar_espacios,'COLEGIO MIXTO  ALOTENANGO','COLEGIO MIXTO ALOTENANGO'
+ESTABLECIMIENTO,normalizar_espacios,'INSTITUTO MIXTO  PRIVADO  EDUCATIVO DE BACHILLERATO  IMPEB','INSTITUTO MIXTO PRIVADO EDUCATIVO DE BACHILLERATO IMPEB'
+ESTABLECIMIENTO,normalizar_espacios,'COLEGIO MIXTO  LICEO LATINO','COLEGIO MIXTO LICEO LATINO'
+DIRECCION,quitar_invisibles,'\xa0',' '
+DIRECCION,quitar_invisibles,'\xa0',' '
+DIRECCION,quitar_invisibles,'\xa0',' '
+DIRECCION,quitar_invisibles,'\xa0',' '
+DIRECCION,quitar_invisibles,'\xa0',' '
+DIRECCION,normalizar_espacios,'25  CA.  04-20  INTERIOR  Z. 10  SAN  JOSE  LA COMUNIDAD','25 CA. 04-20 INTERIOR Z. 10 SAN JOSE LA COMUNIDAD'
+DIRECCION,normalizar_espacios,'2DA. AVENIDA  1-37 ZONA 2 COLONIA ACEITUNO','2DA. AVENIDA 1-37 ZONA 2 COLONIA ACEITUNO'
+DIRECCION,normalizar_espacios,"'2A.  CALLE   32-88  ZONA  7,  COLONIA   TOLEDO, CALZADA DOROTEO GUAMUCH'","'2A. CALLE 32-88 ZONA 7, COLONIA TOLEDO, CALZADA DOROTEO GUAMUCH'"
+DIRECCION,normalizar_espacios,"'9A. AV. 28-98 COLONIA SANTA FE, INTERIOR 1, ZONA 13 CIUDAD DE GUATEMALA  DEL MUNICIPIO DE GUATEMALA'","'9A. AV. 28-98 COLONIA SANTA FE, INTERIOR 1, ZONA 13 CIUDAD DE GUATEMALA DEL MUNICIPIO DE GUATEMALA'"
+DIRECCION,normalizar_espacios,'\xa0',''
+SUPERVISOR,quitar_invisibles,"'AMALIA ESTER LIX\xa0 SOCOP\xa0 DE CHUY,'","'AMALIA ESTER LIX  SOCOP  DE CHUY,'"
+SUPERVISOR,normalizar_espacios,' ',''
+SUPERVISOR,normalizar_espacios,'AMADO  SALOMON FLORES PEREZ','AMADO SALOMON FLORES PEREZ'
+SUPERVISOR,normalizar_espacios,' ',''
+SUPERVISOR,normalizar_espacios,' ',''
+SUPERVISOR,normalizar_espacios,' ',''
+DIRECTOR,quitar_invisibles,'\xa0',' '
+DIRECTOR,quitar_invisibles,'\xa0',' '
+DIRECTOR,quitar_invisibles,'\xa0',' '
+DIRECTOR,quitar_invisibles,'\xa0',' '
+DIRECTOR,quitar_invisibles,'\xa0',' '
+DIRECTOR,normalizar_espacios,'\xa0',''
+DIRECTOR,normalizar_espacios,'\xa0',''
+DIRECTOR,normalizar_espacios,'MIGUEL  AJPACAJÁ GUACHIAC','MIGUEL AJPACAJÁ GUACHIAC'
+DIRECTOR,normalizar_espacios,'\xa0',''
+DIRECTOR,normalizar_espacios,'ROSALINA  GÓMEZ ','ROSALINA GÓMEZ'
+TELEFONO,quitar_invisibles,'\xa0',' '
+TELEFONO,quitar_invisibles,'\xa0',' '
+TELEFONO,quitar_invisibles,'\xa0',' '
+TELEFONO,quitar_invisibles,'\xa0',' '
+TELEFONO,quitar_invisibles,'\xa0',' '
+TELEFONO,normalizar_espacios,'\xa0',''
+TELEFONO,normalizar_espacios,'\xa0',''
+TELEFONO,normalizar_espacios,'\xa0',''
+TELEFONO,normalizar_espacios,'\xa0',''
+TELEFONO,normalizar_espacios,'\xa0',''
+DISTRITO,quitar_invisibles,'\xa0',' '
+DISTRITO,quitar_invisibles,'\xa0',' '
+DISTRITO,quitar_invisibles,'\xa0',' '
+DISTRITO,quitar_invisibles,'\xa0',' '
+DISTRITO,quitar_invisibles,'\xa0',' '
+DISTRITO,normalizar_espacios,'\xa0',''
+DISTRITO,normalizar_espacios,'\xa0',''
+DISTRITO,normalizar_espacios,'\xa0',''
+DISTRITO,normalizar_espacios,'\xa0',''
+DISTRITO,normalizar_espacios,'\xa0',''
+ESTABLECIMIENTO,quitar_puntuacion_borde,"""LICEO MIXTO CRISTIANO 'PIAGET'.""","""LICEO MIXTO CRISTIANO 'PIAGET'"""
+ESTABLECIMIENTO,quitar_puntuacion_borde,'CENTRO DE EDUCACIÓN EXTRAESCOLAR -CEEX-','CENTRO DE EDUCACIÓN EXTRAESCOLAR -CEEX'
+ESTABLECIMIENTO,quitar_puntuacion_borde,"'""COLEGIO DE ESTUDIOS SUPERIORES SIPACAPA"" -CESS-'","'""COLEGIO DE ESTUDIOS SUPERIORES SIPACAPA"" -CESS'"
+ESTABLECIMIENTO,quitar_puntuacion_borde,'CENTRO DE EDUCACIÓN EXTRAESCOLAR -CEEX-','CENTRO DE EDUCACIÓN EXTRAESCOLAR -CEEX'
+ESTABLECIMIENTO,quitar_puntuacion_borde,'CENTRO DE EDUCACION EXTRAESCOLAR -CEEX-','CENTRO DE EDUCACION EXTRAESCOLAR -CEEX'
+DIRECCION,quitar_puntuacion_borde,"'CALLE CORONA, LOTE 109 MANZANA 29, CIUDAD REAL I,'","'CALLE CORONA, LOTE 109 MANZANA 29, CIUDAD REAL I'"
+DIRECCION,quitar_puntuacion_borde,"'4A. CALLE 1-53 ZONA 1, JUTIAPA, JUTIAPA.'","'4A. CALLE 1-53 ZONA 1, JUTIAPA, JUTIAPA'"
+DIRECCION,quitar_puntuacion_borde,"'VILA CHINITO, KM. 143 FRENTE AL HOSPITAL NACIONAL.'","'VILA CHINITO, KM. 143 FRENTE AL HOSPITAL NACIONAL'"
+DIRECCION,quitar_puntuacion_borde,"'20 AVENIDA 0-23 ZONA 1,'",'20 AVENIDA 0-23 ZONA 1'
+DIRECCION,quitar_puntuacion_borde,"'CALLE RODOLFO ROBLES 12-20 ZONA 3,'",'CALLE RODOLFO ROBLES 12-20 ZONA 3'
+SUPERVISOR,quitar_puntuacion_borde,'MABELLINE DAHAN ALDANA RODAS DE PINZON.','MABELLINE DAHAN ALDANA RODAS DE PINZON'
+SUPERVISOR,quitar_puntuacion_borde,"'AMALIA ESTER LIX\xa0 SOCOP\xa0 DE CHUY,'",'AMALIA ESTER LIX\xa0 SOCOP\xa0 DE CHUY'
+SUPERVISOR,quitar_puntuacion_borde,'ENMA ELIZABETH GONZÁLEZ FAJARDO DE QUIÑONEZ.','ENMA ELIZABETH GONZÁLEZ FAJARDO DE QUIÑONEZ'
+SUPERVISOR,quitar_puntuacion_borde,'ENMA ELIZABETH GONZÁLEZ FAJARDO DE QUIÑONEZ.','ENMA ELIZABETH GONZÁLEZ FAJARDO DE QUIÑONEZ'
+DIRECTOR,quitar_puntuacion_borde,'------------',''
+DIRECTOR,quitar_puntuacion_borde,'---',''
+DIRECTOR,quitar_puntuacion_borde,'---',''
+DIRECTOR,quitar_puntuacion_borde,'---',''
+DIRECTOR,quitar_puntuacion_borde,'---',''
+TELEFONO,separar_telefono_multivalor,"'24314989, 24310955'",'24314989'
+TELEFONO,separar_telefono_multivalor,'59352245-79438029','59352245'
+TELEFONO,separar_telefono_multivalor,'79540830-79540909','79540830'
+TELEFONO,separar_telefono_multivalor,'24333306-24342926','24333306'
+TELEFONO,separar_telefono_multivalor,'52187388-47698840','52187388'
+TELEFONO,normalizar_telefono,'2220-1723','22201723'
