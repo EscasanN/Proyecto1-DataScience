@@ -62,7 +62,10 @@ def normalizar_mayusculas(serie):
 # deteccion anterior considera legitimo
 def quitar_puntuacion_borde(serie):
     v = serie.str.replace(_PUNTUACION_INICIO, "", regex=True)
-    return v.str.replace(_PUNTUACION_FINAL, "", regex=True)
+    v = v.str.replace(_PUNTUACION_FINAL, "", regex=True)
+    # strip final: al quitar un guion/punto de borde puede quedar el espacio
+    # que lo precedia ("COSANFE -" -> "COSANFE "), y volveria a haber borde
+    return v.str.strip()
 
 
 # unifica bajo NA los vacios de verdad (es_faltante) y los centinelas de
@@ -471,8 +474,11 @@ def aplicar_limpieza(df):
 
     if "TELEFONO" in df_limpio.columns:
 
+        # se deriva del TELEFONO ORIGINAL (df), no del ya limpiado: para este
+        # punto separar_telefono_multivalor ya recorto la celda al primer
+        # numero, asi que el segundo solo sigue disponible en el crudo
         df_limpio["TELEFONO_2"] = derivar_telefono_2(
-            df_limpio["TELEFONO"]
+            df["TELEFONO"]
         )
 
     registro = pd.DataFrame(

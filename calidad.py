@@ -376,6 +376,17 @@ def generar_informe_md(
         "- Todas las transformaciones corresponden al "
         "pipeline de limpieza ejecutado por `main.py`.",
 
+        "- El aumento de valores faltantes es esperado y no implica "
+        "pérdida de datos: se debe a que `normalizar_faltantes` unifica "
+        "los centinelas de texto (\"N/A\", \"---\", \"0\", celdas vacías, "
+        "`\\xa0`) bajo un solo NA explícito, y a la nueva columna derivada "
+        "TELEFONO_2, vacía en las filas que solo traían un teléfono.",
+
+        "- Las categorías inconsistentes que permanecen corresponden a "
+        "variables de texto libre (nombres de establecimiento, dirección, "
+        "personas), que NO se unifican a propósito: hacerlo destruiría la "
+        "ortografía correcta de nombres propios.",
+
         "",
 
     ])

@@ -120,10 +120,11 @@ CODIGO, MUNICIPIO, DEPARTAMENTO y las 8 categóricas restantes salieron sin prob
 
 ---
 
-## Pendientes fuera de este plan
+## Complementos a este plan (ya implementados)
 
-Requisitos del PDF que las reglas anteriores **no** cubren y que corresponden a la limpieza aplicada (actividad 5, Persona 3):
+Requisitos del PDF que van más allá de las reglas por variable y que ya están
+resueltos en el pipeline (`main.py`):
 
-- **Duplicados de registros:** exactos (0 hoy) y **parciales por similitud** — no hay regla; hay que implementarlo.
-- **Consistencia entre variables (5h):** ej. que MUNICIPIO pertenezca a su DEPARTAMENTO. No hay regla todavía.
-- **Variables derivadas (5i):** al menos `TELEFONO_2` (segundo número). Documentar en el code book al crearse.
+- **Duplicados de registros:** exactos (0) y **parciales por similitud** con RapidFuzz en `dedup.py`. No se eliminan: se marcan en `output/posibles_duplicados.csv` para revisión manual.
+- **Consistencia entre variables (5h):** `consistencia.py` verifica CODIGO↔DEPARTAMENTO y MUNICIPIO↔DEPARTAMENTO (0 inconsistencias).
+- **Variable derivada (5i):** `TELEFONO_2` (segundo número), en `limpieza.py` y documentada en el code book.

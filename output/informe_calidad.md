@@ -9,7 +9,7 @@ antes y después del proceso de limpieza.
 |---|---:|---:|
 | Registros | 11867 | 11867 |
 | Variables | 17 | 18 |
-| Valores faltantes | 3,826 (1.90%) | 16,075 (7.53%) |
+| Valores faltantes | 3,826 (1.90%) | 15,940 (7.46%) |
 | Variables con NA | 6 | 7 |
 | Duplicados exactos | 0 | 0 |
 | Posibles duplicados | 1487 | 1487 |
@@ -51,3 +51,5 @@ antes y después del proceso de limpieza.
 - Los duplicados parciales fueron detectados mediante RapidFuzz.
 - Ningún registro fue eliminado automáticamente.
 - Todas las transformaciones corresponden al pipeline de limpieza ejecutado por `main.py`.
+- El aumento de valores faltantes es esperado y no implica pérdida de datos: se debe a que `normalizar_faltantes` unifica los centinelas de texto ("N/A", "---", "0", celdas vacías, `\xa0`) bajo un solo NA explícito, y a la nueva columna derivada TELEFONO_2, vacía en las filas que solo traían un teléfono.
+- Las categorías inconsistentes que permanecen corresponden a variables de texto libre (nombres de establecimiento, dirección, personas), que NO se unifican a propósito: hacerlo destruiría la ortografía correcta de nombres propios.

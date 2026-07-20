@@ -10,7 +10,10 @@ Establecimientos educativos de nivel diversificado de Guatemala.
 | Variables (crudo) | 17 (+1 derivada, ver §3) |
 | Nivel | DIVERSIFICADO (filtro de la descarga) |
 | Cobertura | 23 departamentos |
-| Versión del conjunto limpio | *(pendiente — la asigna la integración, Persona 3)* |
+| Registros (limpio) | 11,867 (sin cambio; no se eliminaron filas) |
+| Variables (limpio) | 18 (17 + `TELEFONO_2`) |
+| Versión del conjunto limpio | 1.0 — `output/establecimientos_limpios.csv` |
+| Fecha de generación del limpio | 2026-07-20 |
 
 Todas las variables se extraen como texto de una tabla HTML. El "tipo" indica
 el tipo que le corresponde al dato, no el de almacenamiento.
@@ -43,32 +46,33 @@ el tipo que le corresponde al dato, no el de almacenamiento.
 
 ## 2. Calidad y tratamiento por variable
 
-`Faltantes` sobre 11,867. `Tratamiento` = regla propuesta en `plan_limpieza.md`.
-El tratamiento **aplicado** se confirma cuando la limpieza corra sobre el
-dataset completo (Persona 3).
+`Faltantes` sobre 11,867 (crudo). `Registros afectados` = filas que cambió la
+limpieza aplicada por `main.py` (detalle en `output/transformaciones.csv`).
 
-| Variable | Faltantes | Problemas detectados | Tratamiento propuesto |
-|---|---|---|---|
-| CODIGO | 0 | Ninguno | Validar patrón; sin cambios |
-| DISTRITO | 532 (4.48%) | Invisibles, puntuación de borde | Quitar invisibles, normalizar espacios/puntuación |
-| DEPARTAMENTO | 0 | Ninguno | Sin cambios; verificar contra CODIGO (consistencia) |
-| MUNICIPIO | 0 | Ninguno | Sin cambios; verificar par con DEPARTAMENTO |
-| ESTABLECIMIENTO | 5 (0.04%) | Categorías duplicadas (2130), espacios (1395), puntuación (397), typos (218), mojibake (14) | Forma: espacios/invisibles. Ortografía y typos: **revisión manual** (no destruir nombres) |
-| DIRECCION | 76 (0.64%) | Categorías duplicadas (853), espacios (485), puntuación (121) | Normalizar forma |
-| TELEFONO | 946 (7.97%) | Fuera de formato (251), multivalor (183) | Dejar solo dígitos; 2º número → TELEFONO_2 (§3) |
-| SUPERVISOR | 535 (4.51%) | Categorías duplicadas (1198), espacios (133) | Normalizar forma |
-| DIRECTOR | 1,732 (14.6%) | Centinelas (414), espacios (1109), categorías duplicadas (244) | Normalizar forma + faltantes; mojibake a revisión manual |
-| NIVEL | 0 | Ninguno | Sin cambios |
-| SECTOR | 0 | Ninguno | Sin cambios |
-| AREA | 0 | Ninguno | Sin cambios |
-| STATUS | 0 | Ninguno | Sin cambios |
-| MODALIDAD | 0 | Ninguno | Sin cambios |
-| JORNADA | 0 | Ninguno | Sin cambios |
-| PLAN | 0 | Ninguno | Sin cambios |
-| DEPARTAMENTAL | 0 | Ninguno | Sin cambios |
+| Variable | Faltantes | Problemas detectados | Tratamiento aplicado | Registros afectados |
+|---|---|---|---|---:|
+| CODIGO | 0 | Ninguno | Validar patrón; sin cambios | 0 |
+| DISTRITO | 532 (4.48%) | Invisibles, puntuación de borde | Normalizar faltantes | 532 |
+| DEPARTAMENTO | 0 | Ninguno | Sin cambios; verificado contra CODIGO | 0 |
+| MUNICIPIO | 0 | Ninguno | Sin cambios; verificado par con DEPARTAMENTO | 0 |
+| ESTABLECIMIENTO | 5 (0.04%) | Categorías duplicadas (2130), espacios (1395), puntuación (397), typos (218) | Normalizar forma (espacios, puntuación). Ortografía/typos: **revisión manual** | 1,797 |
+| DIRECCION | 76 (0.64%) | Categorías duplicadas (853), espacios (485), puntuación (121) | Normalizar forma + mayúsculas + faltantes | 705 |
+| TELEFONO | 946 (7.97%) | Fuera de formato (251), multivalor (183) | Solo dígitos; 2º número → TELEFONO_2 (§3) | 1,089 |
+| SUPERVISOR | 535 (4.51%) | Categorías duplicadas (1198), espacios (133) | Normalizar forma + faltantes | 700 |
+| DIRECTOR | 1,732 (14.6%) | Centinelas (414), espacios (1109), categorías duplicadas (244) | Normalizar forma + faltantes; mojibake a revisión manual | 3,235 |
+| NIVEL | 0 | Ninguno | Sin cambios | 0 |
+| SECTOR | 0 | Ninguno | Sin cambios | 0 |
+| AREA | 0 | Ninguno | Sin cambios | 0 |
+| STATUS | 0 | Ninguno | Sin cambios | 0 |
+| MODALIDAD | 0 | Ninguno | Sin cambios | 0 |
+| JORNADA | 0 | Ninguno | Sin cambios | 0 |
+| PLAN | 0 | Ninguno | Sin cambios | 0 |
+| DEPARTAMENTAL | 0 | Ninguno | Sin cambios | 0 |
 
-Detalle de faltantes en `summary_tables/resumen_general.csv`; de problemas por
-valor en `profiling/valores_problematicos.csv`.
+**Total de registros afectados: 8,058.** Ningún registro fue eliminado.
+Detalle de faltantes en `summary_tables/resumen_general.csv`; problemas por
+valor en `profiling/valores_problematicos.csv`; transformaciones en
+`output/transformaciones.csv`.
 
 ---
 
@@ -80,7 +84,8 @@ valor en `profiling/valores_problematicos.csv`.
 
 ---
 
-## 4. Pendiente (depende del conjunto limpio)
+## 4. Reproducibilidad
 
-- **Tratamiento aplicado:** arriba está el *propuesto*; el aplicado se documenta cuando la limpieza corra sobre el total.
-- **Versión del conjunto limpio:** se asigna al generar `establecimientos_limpios.csv`.
+El conjunto limpio se regenera con `python main.py`, que aplica las reglas de
+`limpieza.py` sobre el crudo y escribe `output/establecimientos_limpios.csv`.
+El informe de comparación antes/después está en `output/informe_calidad.md`.
