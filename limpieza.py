@@ -148,6 +148,14 @@ def separar_telefono_multivalor(serie):
     return primero, resto
 
 
+# variable derivada TELEFONO_2 (actividad 5i): cuando la celda traia mas de un
+# numero, el segundo queda aqui en vez de perderse. reusa la funcion de arriba
+# para no repetir la logica de separacion. queda "" cuando solo habia un numero
+def derivar_telefono_2(serie):
+    _, resto = separar_telefono_multivalor(serie)
+    return resto
+
+
 # ---------------------------------------------------------------
 # estrategia de limpieza: que regla aplica a cada variable, por que y con
 # que riesgo. esto es el "plan de limpieza" de la actividad 4 de la guia.
