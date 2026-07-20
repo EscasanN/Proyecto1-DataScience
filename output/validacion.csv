@@ -1,0 +1,6 @@
+﻿chequeo,ok,detalle,tipo
+sin espacios al inicio/final,True,garantizado por normalizar_espacios sobre todas las variables,duro
+sin duplicados exactos,True,0 fila(s) en output/duplicados_exactos.csv (no se eliminan solas),informativo
+telefonos en formato consistente,False,116 sin quedar en 8 digitos (ver output/revision_manual.csv),informativo
+departamento/municipio en catalogo,True,0 fuera de catalogo (ver output/revision_manual.csv),informativo
+categorias cerradas sin variantes de escritura,True,"0 variable(s) categorica/geografica con variantes (se unifican automaticamente, no deberian quedar)",duro

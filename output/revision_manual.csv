@@ -1,0 +1,3 @@
+﻿tipo,detalle,casos,ejemplo
+ESTABLECIMIENTO,posible typo entre nombres (similitud >= 92),218,'INED INSTITUTO NACIONAL DE EDUCACION DIVERSIFICADA  <->  INSTITUTO NACIONAL DE EDUCACION DIVERSIFICADA'
+TELEFONO,no quedo en 8 digitos tras la limpieza,116,'4085613'
