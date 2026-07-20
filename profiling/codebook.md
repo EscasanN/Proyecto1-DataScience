@@ -1,50 +1,86 @@
-# Profiling
+# Libro de códigos
 
-Dominio esperado y problemas detectados por variable, sobre los datos
-crudos (`raw_files/datos_crudos_completos.csv`, 11,867 filas). Esto es para limpieza
+Establecimientos educativos de nivel diversificado de Guatemala.
 
-| variable        | dominio esperado                                                                                                                                                      | problemas encontrados                                                                                                                                                                                                                                                                                |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| CODIGO          | patron dd-dd-dddd-dd, unico por establecimiento                                                                                                                       | ninguno                                                                                                                                                                                                                                                                                              |
-| DISTRITO        | patron dd-ddd                                                                                                                                                         | caracteres invisibles (532); puntuacion sobrante al inicio o final (70)                                                                                                                                                                                                                              |
-| DEPARTAMENTO    | catalogo oficial del portal (23 valores; el portal separa CIUDAD CAPITAL de GUATEMALA)                                                                                | ninguno                                                                                                                                                                                                                                                                                              |
-| MUNICIPIO       | catalogo oficial del portal, dependiente del departamento; hay 6 nombres homonimos en mas de un departamento (LA LIBERTAD, SAN JOSE, ...), agrupar siempre por el par | ninguno                                                                                                                                                                                                                                                                                              |
-| ESTABLECIMIENTO | texto libre; nombre propio, conserva ortografia y tildes                                                                                                              | caracteres invisibles (5); caracteres sospechosos o mojibake (14); categoria duplicada por escritura (2130); comillas o parentesis sin cerrar (17); espacios multiples internos (1395); posible typo entre nombres (similitud >= 92) (218); puntuacion sobrante al inicio o final (397)              |
-| DIRECCION       | texto libre                                                                                                                                                           | caracteres invisibles (76); categoria duplicada por escritura (853); centinela de dato ausente (13); comillas o parentesis sin cerrar (1); espacios multiples internos (485); mayusculas inconsistentes (10); puntuacion sobrante al inicio o final (121)                                            |
-| TELEFONO        | 8 digitos (numeracion nacional de guatemala)                                                                                                                          | caracteres invisibles (946); categoria duplicada por escritura (3); espacios multiples internos (8); mayusculas inconsistentes (1); telefono con mas de un numero en la celda (183); telefono fuera de formato (no son 8 digitos) (251)                                                              |
-| SUPERVISOR      | texto libre; nombre de persona                                                                                                                                        | caracteres invisibles (4); caracteres sospechosos o mojibake (4); categoria duplicada por escritura (1198); centinela de dato ausente (3); espacios al inicio o final (31); espacios multiples internos (102); puntuacion sobrante al inicio o final (25)                                            |
-| DIRECTOR        | texto libre; nombre de persona                                                                                                                                        | caracteres invisibles (1732); caracteres sospechosos o mojibake (15); categoria duplicada por escritura (244); centinela de dato ausente (414); comillas o parentesis sin cerrar (1); espacios al inicio o final (241); espacios multiples internos (868); puntuacion sobrante al inicio o final (7) |
-| NIVEL           | categorico: DIVERSIFICADO (fijado por el filtro de descarga)                                                                                                          | ninguno                                                                                                                                                                                                                                                                                              |
-| SECTOR          | categorico: OFICIAL, PRIVADO, MUNICIPAL, COOPERATIVA                                                                                                                  | ninguno                                                                                                                                                                                                                                                                                              |
-| AREA            | categorico: URBANA, RURAL, SIN ESPECIFICAR                                                                                                                            | ninguno                                                                                                                                                                                                                                                                                              |
-| STATUS          | categorico: ABIERTA, CERRADA TEMPORALMENTE, ...                                                                                                                       | ninguno                                                                                                                                                                                                                                                                                              |
-| MODALIDAD       | categorico: MONOLINGUE, BILINGUE                                                                                                                                      | ninguno                                                                                                                                                                                                                                                                                              |
-| JORNADA         | categorico: MATUTINA, VESPERTINA, DOBLE, NOCTURNA, ...                                                                                                                | ninguno                                                                                                                                                                                                                                                                                              |
-| PLAN            | categorico: DIARIO(REGULAR), FIN DE SEMANA, ...                                                                                                                       | ninguno                                                                                                                                                                                                                                                                                              |
-| DEPARTAMENTAL   | direccion departamental del mineduc (26 valores: guatemala se parte en 4, quiche en 2)                                                                                | ninguno                                                                                                                                                                                                                                                                                              |
+| Metadato | Valor |
+|---|---|
+| Fuente | Portal MINEDUC — <https://www.mineduc.gob.gt/BUSCAESTABLECIMIENTO_GE/> |
+| Fecha de extracción | 2026-07-16 |
+| Registros (crudo) | 11,867 |
+| Variables (crudo) | 17 (+1 derivada, ver §3) |
+| Nivel | DIVERSIFICADO (filtro de la descarga) |
+| Cobertura | 23 departamentos |
+| Versión del conjunto limpio | *(pendiente — la asigna la integración, Persona 3)* |
 
-## Prioridad de limpieza
+Todas las variables se extraen como texto de una tabla HTML. El "tipo" indica
+el tipo que le corresponde al dato, no el de almacenamiento.
 
-score = criticidad (3 llave de agrupacion, 2 categorica, 1 descriptiva) x casos.
+---
 
-| rank | variable        | casos | score |
-| ---- | --------------- | ----- | ----- |
-| 1    | ESTABLECIMIENTO | 4176  | 12528 |
-| 2    | DIRECTOR        | 3522  | 3522  |
-| 3    | DIRECCION       | 1559  | 1559  |
-| 4    | TELEFONO        | 1392  | 1392  |
-| 5    | SUPERVISOR      | 1367  | 1367  |
-| 6    | DISTRITO        | 602   | 1204  |
-| 7    | CODIGO          | 0     | 0     |
-| 8    | MUNICIPIO       | 0     | 0     |
-| 9    | DEPARTAMENTO    | 0     | 0     |
-| 10   | STATUS          | 0     | 0     |
-| 11   | AREA            | 0     | 0     |
-| 12   | SECTOR          | 0     | 0     |
-| 13   | NIVEL           | 0     | 0     |
-| 14   | DEPARTAMENTAL   | 0     | 0     |
-| 15   | PLAN            | 0     | 0     |
-| 16   | JORNADA         | 0     | 0     |
-| 17   | MODALIDAD       | 0     | 0     |
+## 1. Definición de variables
 
-Detalle en `valores_problematicos.csv`.
+| Variable | Descripción | Tipo | Dominio / valores posibles |
+|---|---|---|---|
+| CODIGO | Código único del establecimiento | Identificador | Patrón `dd-dd-dddd-dd`; los 2 primeros dígitos son el departamento |
+| DISTRITO | Código del distrito escolar | Identificador | Patrón `dd-ddd`; numeración propia, no codifica el departamento |
+| DEPARTAMENTO | Departamento del establecimiento | Categórico | 23 valores del catálogo oficial (el portal separa CIUDAD CAPITAL de GUATEMALA) |
+| MUNICIPIO | Municipio del establecimiento | Categórico | Catálogo oficial por departamento (`profiling/catalogo_municipios.csv`); válido solo dentro de su departamento |
+| ESTABLECIMIENTO | Nombre del establecimiento | Texto libre | Nombre propio; conserva ortografía y tildes |
+| DIRECCION | Dirección física | Texto libre | — |
+| TELEFONO | Teléfono principal | Numérico | 8 dígitos (numeración nacional) |
+| SUPERVISOR | Nombre del supervisor | Texto libre | Nombre de persona |
+| DIRECTOR | Nombre del director | Texto libre | Nombre de persona |
+| NIVEL | Nivel educativo | Categórico | DIVERSIFICADO |
+| SECTOR | Sector administrativo | Categórico | PRIVADO, OFICIAL, COOPERATIVA, MUNICIPAL |
+| AREA | Área geográfica | Categórico | URBANA, RURAL, SIN ESPECIFICAR |
+| STATUS | Estado del establecimiento | Categórico | ABIERTA, CERRADA TEMPORALMENTE, CERRADA DEFINITIVAMENTE, TEMPORAL TITULOS, TEMPORAL NOMBRAMIENTO |
+| MODALIDAD | Modalidad lingüística | Categórico | MONOLINGUE, BILINGUE |
+| JORNADA | Jornada | Categórico | DOBLE, VESPERTINA, MATUTINA, SIN JORNADA, NOCTURNA, INTERMEDIA |
+| PLAN | Plan de estudios | Categórico | DIARIO(REGULAR), FIN DE SEMANA, SEMIPRESENCIAL (y variantes), A DISTANCIA, VIRTUAL A DISTANCIA, SABATINO, DOMINICAL, MIXTO, IRREGULAR, INTERCALADO |
+| DEPARTAMENTAL | Dirección departamental del MINEDUC | Categórico | 26 valores (GUATEMALA se divide en 4, QUICHÉ en 2) |
+
+---
+
+## 2. Calidad y tratamiento por variable
+
+`Faltantes` sobre 11,867. `Tratamiento` = regla propuesta en `plan_limpieza.md`.
+El tratamiento **aplicado** se confirma cuando la limpieza corra sobre el
+dataset completo (Persona 3).
+
+| Variable | Faltantes | Problemas detectados | Tratamiento propuesto |
+|---|---|---|---|
+| CODIGO | 0 | Ninguno | Validar patrón; sin cambios |
+| DISTRITO | 532 (4.48%) | Invisibles, puntuación de borde | Quitar invisibles, normalizar espacios/puntuación |
+| DEPARTAMENTO | 0 | Ninguno | Sin cambios; verificar contra CODIGO (consistencia) |
+| MUNICIPIO | 0 | Ninguno | Sin cambios; verificar par con DEPARTAMENTO |
+| ESTABLECIMIENTO | 5 (0.04%) | Categorías duplicadas (2130), espacios (1395), puntuación (397), typos (218), mojibake (14) | Forma: espacios/invisibles. Ortografía y typos: **revisión manual** (no destruir nombres) |
+| DIRECCION | 76 (0.64%) | Categorías duplicadas (853), espacios (485), puntuación (121) | Normalizar forma |
+| TELEFONO | 946 (7.97%) | Fuera de formato (251), multivalor (183) | Dejar solo dígitos; 2º número → TELEFONO_2 (§3) |
+| SUPERVISOR | 535 (4.51%) | Categorías duplicadas (1198), espacios (133) | Normalizar forma |
+| DIRECTOR | 1,732 (14.6%) | Centinelas (414), espacios (1109), categorías duplicadas (244) | Normalizar forma + faltantes; mojibake a revisión manual |
+| NIVEL | 0 | Ninguno | Sin cambios |
+| SECTOR | 0 | Ninguno | Sin cambios |
+| AREA | 0 | Ninguno | Sin cambios |
+| STATUS | 0 | Ninguno | Sin cambios |
+| MODALIDAD | 0 | Ninguno | Sin cambios |
+| JORNADA | 0 | Ninguno | Sin cambios |
+| PLAN | 0 | Ninguno | Sin cambios |
+| DEPARTAMENTAL | 0 | Ninguno | Sin cambios |
+
+Detalle de faltantes en `summary_tables/resumen_general.csv`; de problemas por
+valor en `profiling/valores_problematicos.csv`.
+
+---
+
+## 3. Variables derivadas
+
+| Variable | Origen | Descripción |
+|---|---|---|
+| TELEFONO_2 | TELEFONO | Segundo número, cuando la celda traía más de uno (183 casos). Se separa para no perder el dato. Vacío si solo había un número |
+
+---
+
+## 4. Pendiente (depende del conjunto limpio)
+
+- **Tratamiento aplicado:** arriba está el *propuesto*; el aplicado se documenta cuando la limpieza corra sobre el total.
+- **Versión del conjunto limpio:** se asigna al generar `establecimientos_limpios.csv`.
