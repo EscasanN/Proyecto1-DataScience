@@ -151,11 +151,16 @@ def generar_metricas(
             faltantes.values.sum()
         )
 
-        porcentaje_faltantes = (
-            total_faltantes
-            / (df.shape[0] * df.shape[1])
-            * 100
-        )
+        total_celdas = df.shape[0] * df.shape[1]
+
+        if total_celdas == 0:
+            porcentaje_faltantes = 0
+        else:
+            porcentaje_faltantes = (
+                total_faltantes
+                / total_celdas
+                * 100
+            )
 
         variables_na = int(
             (faltantes.sum() > 0).sum()

@@ -4,6 +4,7 @@
 
 import re
 import unicodedata
+import pandas as pd
 
 _PUNTUACION = re.compile(r"[^\w\s]", flags=re.UNICODE)
 _ESPACIOS = re.compile(r"\s+")
@@ -12,7 +13,15 @@ _ESPACIOS = re.compile(r"\s+")
 # vacio de verdad: el portal manda \xa0 y pandas no lo lee como NA, pero
 # strip() si se lo come. los centinelas tipo "SIN DATO" van en detectores.py
 def es_faltante(valor):
-    return valor.strip() == ""
+    """
+    Devuelve True si el valor debe
+    considerarse faltante.
+    """
+
+    if pd.isna(valor):
+        return True
+
+    return str(valor).strip() == ""
 
 
 # descompone y bota los diacriticos. la enie tambien cae, ojo al usarla

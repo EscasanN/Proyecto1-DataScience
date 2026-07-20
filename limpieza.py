@@ -376,3 +376,117 @@ REVISION_MANUAL = [
         riesgo="dos establecimientos legitimos y distintos pueden tener nombres parecidos (ej. dos sedes de un mismo colegio); fusionarlos sin revisar perderia un registro real",
     ),
 ]
+
+# ---------------------------------------------------------------
+# aplicación completa de la estrategia de limpieza
+# ---------------------------------------------------------------
+
+def aplicar_limpieza(df):
+    """
+    Aplica todas las reglas de limpieza sobre un dataframe.
+
+    Devuelve:
+
+        dataframe_limpio
+        registro_transformaciones
+
+    El orden de aplicación sigue exactamente ESTRATEGIA.
+    """
+
+    df_limpio = df.copy()
+
+    transformaciones = []
+
+    def medir_cambios(original, resultado):
+        ambos_na = original.isna() & resultado.isna()
+        distintos = (original != resultado) & ~ambos_na
+        return int(distintos.sum())
+
+    # -----------------------------------------------------------
+    # reglas principales
+    # -----------------------------------------------------------
+
+    for regla in ESTRATEGIA:
+
+        if regla.variable not in df_limpio.columns:
+            continue
+
+        original = df_limpio[regla.variable]
+
+        resultado = regla.funcion(original)
+
+        cambios = medir_cambios(original, resultado)
+
+        df_limpio[regla.variable] = resultado
+
+        if cambios:
+
+            transformaciones.append({
+
+                "variable": regla.variable,
+
+                "problema_detectado": regla.problema,
+
+                "transformacion": regla.transformacion,
+
+                "registros_afectados": cambios,
+
+                "justificacion": regla.justificacion,
+
+            })
+
+    # -----------------------------------------------------------
+    # categorías
+    # -----------------------------------------------------------
+
+    for regla in reglas_categorias(df_limpio.fillna("")):
+
+        original = df_limpio[regla.variable]
+
+        resultado = regla.funcion(original)
+
+        cambios = medir_cambios(original, resultado)
+
+        df_limpio[regla.variable] = resultado
+
+        if cambios:
+
+            transformaciones.append({
+
+                "variable": regla.variable,
+
+                "problema_detectado": regla.problema,
+
+                "transformacion": regla.transformacion,
+
+                "registros_afectados": cambios,
+
+                "justificacion": regla.justificacion,
+
+            })
+
+    # -----------------------------------------------------------
+    # variable derivada
+    # -----------------------------------------------------------
+
+    if "TELEFONO" in df_limpio.columns:
+
+        df_limpio["TELEFONO_2"] = derivar_telefono_2(
+            df_limpio["TELEFONO"]
+        )
+
+    registro = pd.DataFrame(
+
+        transformaciones,
+
+        columns=[
+            "variable",
+            "problema_detectado",
+            "transformacion",
+            "registros_afectados",
+            "justificacion",
+        ],
+
+    )
+
+    return df_limpio, registro
