@@ -4,7 +4,7 @@
 
 import pandas as pd
 
-import limpieza as lim
+from src import limpieza as lim
 
 
 def serie(valores, nombre="X"):

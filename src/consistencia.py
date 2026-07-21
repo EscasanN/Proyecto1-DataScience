@@ -12,7 +12,7 @@
 
 import pandas as pd
 
-from common import clave_canonica, es_faltante
+from src.common import clave_canonica, es_faltante
 
 # codigo oficial de departamento -> nombre, como lo devuelve el portal del
 # mineduc. es un catalogo de referencia fijo (23 valores), igual que el de

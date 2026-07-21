@@ -9,7 +9,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from limpieza import ESTRATEGIA, REVISION_MANUAL, reglas_categorias
+from src.limpieza import ESTRATEGIA, REVISION_MANUAL, reglas_categorias
 
 ARCHIVO = "raw_files/datos_crudos_completos.csv"
 OUTPUT_DIR = Path("profiling")

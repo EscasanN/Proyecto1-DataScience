@@ -19,9 +19,9 @@ from dataclasses import dataclass
 import pandas as pd
 from rapidfuzz import fuzz
 
-from common import clave_canonica, es_faltante
+from src.common import clave_canonica, es_faltante
 
-from profiler import UMBRAL_TYPO
+from src.profiler import UMBRAL_TYPO
 
 
 # mismo umbral usado por profiler.py

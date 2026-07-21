@@ -2,16 +2,16 @@
 # generado en output/. a diferencia de los otros test_*, estas SI leen disco:
 # comprueban que el resultado del pipeline cumple las reglas de calidad.
 #
-# si el CSV no existe todavia, los tests se saltan con un aviso (correr main.py)
+# si el CSV no existe todavia, los tests se saltan con un aviso (correr python -m src.main)
 
 from pathlib import Path
 
 import pandas as pd
 import pytest
 
-from catalogo import obtener as obtener_catalogo
-from common import clave_canonica, es_faltante
-import consistencia
+from src.catalogo import obtener as obtener_catalogo
+from src.common import clave_canonica, es_faltante
+from src import consistencia
 
 CSV_LIMPIO = Path("output") / "establecimientos_limpios.csv"
 
@@ -35,7 +35,7 @@ DOMINIOS = {
 @pytest.fixture(scope="module")
 def limpio():
     if not CSV_LIMPIO.exists():
-        pytest.skip(f"no existe {CSV_LIMPIO}; correr main.py primero")
+        pytest.skip(f"no existe {CSV_LIMPIO}; correr 'python -m src.main' primero")
     return pd.read_csv(CSV_LIMPIO, dtype=str, keep_default_na=False)
 
 

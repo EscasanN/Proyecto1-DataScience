@@ -8,7 +8,7 @@ import unicodedata
 
 import pandas as pd
 
-from common import clave_canonica, es_faltante
+from src.common import clave_canonica, es_faltante
 
 
 # una fila de la tabla que pide division.md, mas el listado de valores

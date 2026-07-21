@@ -21,12 +21,12 @@ from pathlib import Path
 
 import pandas as pd
 
-import calidad
-import consistencia
-import dedup
-import limpieza
+from src import calidad
+from src import consistencia
+from src import dedup
+from src import limpieza
 
-from catalogo import obtener as obtener_catalogo
+from src.catalogo import obtener as obtener_catalogo
 
 
 # ---------------------------------------------------------------
@@ -146,7 +146,7 @@ def ejecutar_pipeline():
     except Exception as e:
         raise RuntimeError(
             "No fue posible obtener el catálogo de municipios. "
-            "Ejecute catalogo.py previamente o conecte a internet."
+            "Ejecute 'python -m src.catalogo' previamente o conecte a internet."
         ) from e
 
     inconsistencias = consistencia.revisar_consistencia(

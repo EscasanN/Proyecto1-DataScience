@@ -5,9 +5,9 @@
 import pandas as pd
 import pytest
 
-from common import clave_canonica, es_faltante, sin_tildes
-import detectores as det
-from profiler import detectar_fuera_de_catalogo, detectar_typos_establecimiento, priorizar
+from src.common import clave_canonica, es_faltante, sin_tildes
+from src import detectores as det
+from src.profiler import detectar_fuera_de_catalogo, detectar_typos_establecimiento, priorizar
 
 
 def serie(valores, nombre="X"):

@@ -12,8 +12,8 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from common import clave_canonica, es_faltante
-from detectores import (
+from src.common import clave_canonica, es_faltante
+from src.detectores import (
     CENTINELAS,
     INVISIBLES,
     PATRON_CODIGO,

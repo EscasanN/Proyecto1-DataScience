@@ -1,7 +1,7 @@
 from pathlib import Path
 import pandas as pd
 
-from common import es_faltante
+from src.common import es_faltante
 
 # =====================================================
 # CONFIGURACIÓN

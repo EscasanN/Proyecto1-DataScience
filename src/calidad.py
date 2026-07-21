@@ -11,10 +11,10 @@
 
 import pandas as pd
 
-from common import es_faltante
-from detectores import analizar
-from eda import tipo_inferido
-from dedup import (
+from src.common import es_faltante
+from src.detectores import analizar
+from src.eda import tipo_inferido
+from src.dedup import (
     cantidad_duplicados_exactos,
     cantidad_duplicados_parciales,
 )

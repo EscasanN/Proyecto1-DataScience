@@ -3,8 +3,8 @@
 
 import pandas as pd
 
-import consistencia as con
-import limpieza as lim
+from src import consistencia as con
+from src import limpieza as lim
 
 
 def _catalogo():

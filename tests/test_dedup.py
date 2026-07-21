@@ -13,7 +13,7 @@
 
 import pandas as pd
 
-import dedup
+from src import dedup
 
 
 # ---------------------------------------------------------------

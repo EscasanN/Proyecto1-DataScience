@@ -5,9 +5,9 @@ from pathlib import Path
 import pandas as pd
 from rapidfuzz import fuzz
 
-from catalogo import obtener as obtener_catalogo
-from common import clave_canonica, es_faltante
-from detectores import Hallazgo, analizar
+from src.catalogo import obtener as obtener_catalogo
+from src.common import clave_canonica, es_faltante
+from src.detectores import Hallazgo, analizar
 
 ARCHIVO = "raw_files/datos_crudos_completos.csv"
 OUTPUT_DIR = Path("profiling")

@@ -86,6 +86,6 @@ valor en `profiling/valores_problematicos.csv`; transformaciones en
 
 ## 4. Reproducibilidad
 
-El conjunto limpio se regenera con `python main.py`, que aplica las reglas de
+El conjunto limpio se regenera con `python -m src.main`, que aplica las reglas de
 `limpieza.py` sobre el crudo y escribe `output/establecimientos_limpios.csv`.
 El informe de comparación antes/después está en `output/informe_calidad.md`.
