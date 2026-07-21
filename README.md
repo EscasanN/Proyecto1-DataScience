@@ -18,30 +18,30 @@ pip install -r requirements.txt
 
 ## Estructura
 
-| Archivo | Qué hace |
-|---|---|
-| `downloader.py` | Descarga los 23 departamentos del portal y guarda los CSV crudos |
-| `eda.py` | Diagnóstico del dataset: filas, tipos, faltantes, únicos, duplicados |
-| `catalogo.py` | Baja el catálogo oficial de municipios por departamento |
-| `profiler.py` | Perfilado de calidad: detecta problemas de texto y categorías |
-| `detectores.py` | Funciones de detección usadas por el profiler |
-| `limpieza.py` | Funciones de limpieza + la estrategia (reglas por variable) |
+| Archivo             | Qué hace                                                                             |
+| ------------------- | ------------------------------------------------------------------------------------- |
+| `downloader.py`   | Descarga los 23 departamentos del portal y guarda los CSV crudos                      |
+| `eda.py`          | Diagnóstico del dataset: filas, tipos, faltantes, únicos, duplicados                |
+| `catalogo.py`     | Baja el catálogo oficial de municipios por departamento                              |
+| `profiler.py`     | Perfilado de calidad: detecta problemas de texto y categorías                        |
+| `detectores.py`   | Funciones de detección usadas por el profiler                                        |
+| `limpieza.py`     | Funciones de limpieza + la estrategia (reglas por variable)                           |
 | `consistencia.py` | Verifica consistencia entre variables (CODIGO↔DEPARTAMENTO, MUNICIPIO↔DEPARTAMENTO) |
-| `dedup.py` | Detecta duplicados exactos y parciales (RapidFuzz); no elimina, marca |
-| `estrategia.py` | Prueba las reglas sobre una muestra y mide cuánto cambiarían |
-| `calidad.py` | Genera métricas antes/después, registro de transformaciones e informe |
-| `main.py` | Orquesta el pipeline: aplica la limpieza y escribe el conjunto limpio |
-| `codebook_pdf.py` | Convierte el libro de códigos a PDF |
-| `common.py` | Utilidades compartidas (faltantes, clave canónica) |
+| `dedup.py`        | Detecta duplicados exactos y parciales (RapidFuzz); no elimina, marca                 |
+| `estrategia.py`   | Prueba las reglas sobre una muestra y mide cuánto cambiarían                        |
+| `calidad.py`      | Genera métricas antes/después, registro de transformaciones e informe               |
+| `main.py`         | Orquesta el pipeline: aplica la limpieza y escribe el conjunto limpio                 |
+| `codebook_pdf.py` | Convierte el libro de códigos a PDF                                                  |
+| `common.py`       | Utilidades compartidas (faltantes, clave canónica)                                   |
 
 Carpetas de salida:
 
-| Carpeta | Contenido |
-|---|---|
-| `raw_files/` | CSV crudos por departamento + consolidado + metadata |
-| `summary_tables/` | Tablas del diagnóstico (una por variable + resumen general) |
-| `profiling/` | Hallazgos, prioridad, catálogo, code book y estrategia |
-| `output/` | Conjunto limpio, informe de calidad, métricas, transformaciones, duplicados |
+| Carpeta             | Contenido                                                                    |
+| ------------------- | ---------------------------------------------------------------------------- |
+| `raw_files/`      | CSV crudos por departamento + consolidado + metadata                         |
+| `summary_tables/` | Tablas del diagnóstico (una por variable + resumen general)                 |
+| `profiling/`      | Hallazgos, prioridad, catálogo, code book y estrategia                      |
+| `output/`         | Conjunto limpio, informe de calidad, métricas, transformaciones, duplicados |
 
 Documentos:
 
@@ -74,10 +74,3 @@ pytest
 
 Incluye pruebas de las funciones (detección, limpieza, dedup, consistencia) y
 validación del conjunto limpio ya generado (`test_limpio.py`).
-
-## Estado
-
-Completo: descarga, diagnóstico, perfilado, plan, limpieza aplicada, dedup,
-conjunto limpio, informe de calidad y libro de códigos.
-
-Pendiente: exportar el libro de códigos a PDF.
