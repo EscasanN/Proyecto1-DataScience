@@ -85,13 +85,13 @@ validación del conjunto limpio ya generado (`tests/test_limpio.py`).
 
 Material a entregar (según la guía del proyecto):
 
-| Entregable                                  | Ubicación                              |
-| ------------------------------------------- | --------------------------------------- |
-| Código (carga → limpieza)                 | `src/` (todos los módulos)           |
-| Repositorio con código + datos + code book | este repo                               |
-| Libro de códigos (markdown)                | `profiling/codebook.md`               |
-| Libro de códigos (PDF)                     | `profiling/codebook.pdf`              |
-| CSV con los datos limpios                   | `output/establecimientos_limpios.csv` |
+| Entregable                                  | Ubicación                                |
+| ------------------------------------------- | ----------------------------------------- |
+| Código (carga → limpieza)                 | `src/` (todos los módulos)             |
+| Repositorio con código + datos + code book | la branch "pipeline-integration", no main |
+| Libro de códigos (markdown)                | `profiling/codebook.md`                 |
+| Libro de códigos (PDF)                     | `profiling/codebook.pdf`                |
+| CSV con los datos limpios                   | `output/establecimientos_limpios.csv`   |
 
 Dónde está la evidencia de cada criterio de evaluación:
 
