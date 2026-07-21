@@ -31,6 +31,7 @@ pip install -r requirements.txt
 | `estrategia.py` | Prueba las reglas sobre una muestra y mide cuánto cambiarían |
 | `calidad.py` | Genera métricas antes/después, registro de transformaciones e informe |
 | `main.py` | Orquesta el pipeline: aplica la limpieza y escribe el conjunto limpio |
+| `codebook_pdf.py` | Convierte el libro de códigos a PDF |
 | `common.py` | Utilidades compartidas (faltantes, clave canónica) |
 
 Carpetas de salida:
@@ -59,6 +60,7 @@ python catalogo.py       # -> profiling/catalogo_municipios.csv
 python profiler.py       # -> profiling/ (hallazgos, prioridad, code book)
 python estrategia.py     # -> profiling/ (estrategia y evidencia en muestra)
 python main.py           # -> output/ (conjunto limpio + informe de calidad)
+python codebook_pdf.py   # -> profiling/codebook.pdf
 ```
 
 `downloader.py` y `catalogo.py` necesitan internet (consultan el portal).
